@@ -15,6 +15,18 @@ public class Bid {
     private LocalDateTime bidTime;
     private boolean isWinning;
 
+    public Bid() {};
+
+    public Bid(int id, Product product, BigDecimal amount, int desiredQuantity, User user, LocalDateTime bidTime, boolean isWinning) {
+        this.id = id;
+        this.product = product;
+        this.amount = amount;
+        this.desiredQuantity = desiredQuantity;
+        this.user = user;
+        this.bidTime = bidTime;
+        this.isWinning = isWinning;
+    }
+
     public int getId() {
         return id;
     }
