@@ -21,22 +21,22 @@ public class BidMessageService implements IBidMessageService {
     }
 
 
-     public void UnderMinimumPriceMessage(Bid bid) {
+     public void underMinimumPriceMessage(Bid bid) {
         printMessage(bid, UNDER_MIN);
     }
 
 
-    public void WinningBidMessage(Bid bid) {
+    public void winningBidMessage(Bid bid) {
         printMessage(bid, YOU_WON);
     }
 
 
-    public void CurrentHighestBidMessage(Bid bid) {
+    public void currentHighestBidMessage(Bid bid) {
         printMessage(bid, HIGHEST);
     }
 
 
-    public void OutbidMessage(Bid bid) {
+    public void outbidMessage(Bid bid) {
         printMessage(bid, OUTBID);
     }
 }

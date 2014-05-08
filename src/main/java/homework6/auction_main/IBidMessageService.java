@@ -7,11 +7,11 @@ import homework6.auction.*;
  */
 public interface IBidMessageService {
 
-    public void UnderMinimumPriceMessage(Bid bid);
+    public void underMinimumPriceMessage(Bid bid);
 
-    public void WinningBidMessage(Bid bid);
+    public void winningBidMessage(Bid bid);
 
-    public void CurrentHighestBidMessage(Bid bid);
+    public void currentHighestBidMessage(Bid bid);
 
-    public void OutbidMessage(Bid bid);
+    public void outbidMessage(Bid bid);
 }

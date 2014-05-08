@@ -11,10 +11,10 @@ import java.util.*;
 
 public class BidProcessor {
 
-    private List<Bid> bids = new ArrayList<>();
+    List<Bid> bids = new ArrayList<>();
 
-    private static final IBidMessageService bms = new BidMessageService();
-    private static final IBidService as = new BidService();
+    IBidMessageService messageService = new BidMessageService();
+    IBidService bidService = new BidService();
 
 
     public void processBid() {
@@ -22,18 +22,18 @@ public class BidProcessor {
         Bid maxBid;
 
         // Retrieve a bid
-        Bid bid = as.getNextBid();
+        Bid bid = bidService.getNextBid();
 
         // Add to the list
         bids.add(bid);
 
         // Check for under Min
         if (bid.getAmount().compareTo(getBidProductMinimalPrice(bid)) < 0 ) {
-            bms.UnderMinimumPriceMessage(bid);
+            messageService.underMinimumPriceMessage(bid);
         } else {
             // Check for over Reserve
             if ( bid.getAmount().compareTo(getBidProductReservedPrice(bid)) >= 0) {
-               bms.WinningBidMessage(bid);
+               messageService.winningBidMessage(bid);
             } else {
                 // Check for currently winning
                 maxBid = bids.stream()
@@ -42,7 +42,7 @@ public class BidProcessor {
                         .orElse(null);
                 if (bid == maxBid) {
                     // Current winner
-                    bms.CurrentHighestBidMessage(bid);
+                    messageService.currentHighestBidMessage(bid);
                 }
             }
         }
@@ -52,7 +52,7 @@ public class BidProcessor {
                 .filter(bd -> getBidProductId(bd) == getBidProductId(bid) &&
                               bd.getAmount().compareTo(bid.getAmount()) < 0 &&
                               getBidUserGetOverbidNotifications(bd))
-                .forEach(bd -> bms.OutbidMessage(bd));
+                .forEach(bd -> messageService.outbidMessage(bd));
 
     }
 

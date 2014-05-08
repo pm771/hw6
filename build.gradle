@@ -22,7 +22,7 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 // execute the application with ./gradlew run
-mainClassName = "homework6.auction_main.AuctionRunner"
+mainClassName = "homework6.auction_main.Runner"
 
 // In this section you declare where to find the dependencies of your project
 repositories {

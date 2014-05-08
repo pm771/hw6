@@ -27,6 +27,16 @@ public class Bid {
         this.isWinning = isWinning;
     }
 
+    public Bid(Bid bid) {
+        this.id = bid.id;
+        this.product = bid.product;
+        this.amount = bid.amount;
+        this.desiredQuantity = bid.desiredQuantity;
+        this.user = bid.user;
+        this.bidTime = bid.bidTime;
+        this.isWinning = bid.isWinning;
+    }
+
     public int getId() {
         return id;
     }
